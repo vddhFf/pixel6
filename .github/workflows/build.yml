@@ -24,7 +24,7 @@ jobs:
           echo "CONFIG_KSU=y" >> .config
           scripts/config --disable CONFIG_DEBUG_INFO_BTF
           make olddefconfig
-          make -j$(nproc)
+          make Image -j$(nproc)
 
       - name: Upload kernel image
         uses: actions/upload-artifact@v4
@@ -32,5 +32,3 @@ jobs:
           name: pixel6-kernel-image
           path: |
             arch/arm64/boot/Image
-            arch/arm64/boot/Image.gz
-            arch/arm64/boot/Image.lz4
