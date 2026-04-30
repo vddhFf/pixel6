@@ -21,6 +21,7 @@ jobs:
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
           make gki_defconfig
+          echo "obj-y += kernel/" > drivers/KernelSU/Makefile
           echo "CONFIG_KSU=y" >> .config
           scripts/config --disable CONFIG_DEBUG_INFO_BTF
           make olddefconfig
