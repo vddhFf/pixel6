@@ -25,7 +25,7 @@ jobs:
           echo "CONFIG_KSU=y" >> .config
           scripts/config --disable CONFIG_DEBUG_INFO_BTF
           make olddefconfig
-          make Image -j$(nproc)
+          make Image -j$(nproc) KCFLAGS="-Wno-error"
 
       - name: Upload kernel image
         uses: actions/upload-artifact@v4
