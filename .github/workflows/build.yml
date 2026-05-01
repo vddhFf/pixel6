@@ -24,6 +24,7 @@ jobs:
           echo "obj-y += kernel/" > drivers/KernelSU/Makefile
           echo "CONFIG_KSU=y" >> .config
           scripts/config --disable CONFIG_DEBUG_INFO_BTF
+          scripts/config --disable CONFIG_SOUND --disable CONFIG_SND_USB_AUDIO --disable CONFIG_SND
           make olddefconfig
           make Image -j$(nproc) KCFLAGS="-Wno-error"
 
